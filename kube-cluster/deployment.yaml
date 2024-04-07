@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ws-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ws-servers
+  template:
+    metadata:
+      labels:
+        app: ws-servers
+    spec:
+      containers:
+        - name: ws3000
+          image: raghulds/ws3000
+        - name: ws5000
+          image: raghulds/ws5000      
