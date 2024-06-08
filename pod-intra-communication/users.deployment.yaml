@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users
+  template:
+    metadata:
+      labels:
+        app: users
+    spec:
+      containers:
+        - name: users
+          image: raghulds/users:latest  
+          env:
+            - name: AUTH_ENDPOINT
+              value: localhost
+        - name: auth
+          image: raghulds/auth:latest  
